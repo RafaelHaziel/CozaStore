@@ -6,3 +6,10 @@ git config --global user.email hazieldefato@gmail.com
 -- Criar o Projeto --
 
 dotnet new mvc -o CozaStore
+
+-- Nuget Galery (Ctrl + Shift + P) --
+
+EntityFrameworkCore
+EntityFrameworkCore.Design
+EntityFrameworkCore.InMemory
+aspnet.identity.EntityFrameworkCore
