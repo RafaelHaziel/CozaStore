@@ -2,7 +2,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using CozaStore.Models;
 
-namespace CozaStore.Model;
+namespace CozaStore.Models;
 
 [Table("Produto")]
 public class Produto
@@ -55,4 +55,7 @@ public class Produto
     public int CategoriaId { get; set; }
     [ForeignKey("CategoriaId")]
     public Categoria Categoria { get; set; }
+
+    public ICollection<Estoque> Estoque { get; set; }
+    public ICollection<ProdutoFoto> Fotos { get; set; }
 }

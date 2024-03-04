@@ -1,5 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using CozaStore.Models;
 
 namespace CozaStore.Models;
 
@@ -28,4 +29,6 @@ public class Categoria
     
     [ForeignKey("CategoriaPaiId")]
     public Categoria CategoriaPai { get; set; }
+    
+    public ICollection<Produto> Produtos { get; set; }
 }
