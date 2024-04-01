@@ -4,9 +4,9 @@
     ViewData["Title"] = "Edit";
 }
 
-<h1>Edit</h1>
+<h1>Categoria</h1>
 
-<h4>Categoria</h4>
+<h4>Alterar</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -19,9 +19,9 @@
                 <span asp-validation-for="Nome" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Foto" class="control-label"></label>
-                <input asp-for="Foto" class="form-control" />
-                <span asp-validation-for="Foto" class="text-danger"></span>
+                <label asp-for="NovaFoto" class="control-label"></label>
+                <input asp-for="NovaFoto" class="form-control" />
+                <span asp-validation-for="NovaFoto" class="text-danger"></span>
             </div>
             <div class="form-group form-check">
                 <label class="form-check-label">
@@ -38,6 +38,11 @@
                 <select asp-for="CategoriaPaiId" class="form-control" asp-items="ViewBag.CategoriaPaiId"></select>
                 <span asp-validation-for="CategoriaPaiId" class="text-danger"></span>
             </div>
+            <div class="form-group mb-3">
+                <label asp-for="NovaFoto" class="control-label"></label>
+                <img id="Preview" class="img-fluid w-100" />
+                <input type="file" asp-for="NovaFoto" class="form-control" accept=".jpg,.jpeg,.png,.gif,.jfif" />
+            </div>
             <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-primary" />
             </div>
@@ -48,4 +53,3 @@
 <div>
     <a asp-action="Index">Back to List</a>
 </div>
-

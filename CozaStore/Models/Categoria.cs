@@ -31,4 +31,5 @@ public class Categoria
     public Categoria CategoriaPai { get; set; }
     
     public ICollection<Produto> Produtos { get; set; }
+    public string NovaFoto { get; internal set; }
 }
