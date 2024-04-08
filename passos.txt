@@ -13,3 +13,4 @@ EntityFrameworkCore
 EntityFrameworkCore.Design
 EntityFrameworkCore.InMemory
 aspnet.identity.EntityFrameworkCore
+
