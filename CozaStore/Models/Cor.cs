@@ -1,7 +1,8 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace CozaStore.Models;
+namespace Cozastore.Models;
+
 [Table("Cor")]
 public class Cor
 {
@@ -9,13 +10,13 @@ public class Cor
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
     public int Id { get; set; }
 
-    [Required(ErrorMessage = "Por favor, informe o Nome")]
-    [StringLength(30, ErrorMessage = "O nome deve possuir no máximo 30 caracteres")]
+    [Required(ErrorMessage = "Favor, informe o nome da cor.")]
+    [StringLength(30, ErrorMessage = "O nome deve possuir no máximo 30 caracteres.")]
     public string Nome { get; set; }
-    
-    [Display(Name = "Código Hexa", Prompt = "Ex. #0000000")]
-    [Required(ErrorMessage = "Por favor, informe o Código Hexa")]
-    [StringLength(7, ErrorMessage = "O Código Hexa deve possuir no máximo 7 caracteres")]    
+
+    [Display(Name = "Código Hexa.", Prompt = "Ex. #000000")]
+    [Required(ErrorMessage = "Favor, informe o Código Hexa.")]
+    [StringLength(7, ErrorMessage = "O Código Hexa deve possuir no máximo 7 caracteres.")]
     public string CodigoHexa { get; set; }
 
     public ICollection<Estoque> Estoque { get; set; }

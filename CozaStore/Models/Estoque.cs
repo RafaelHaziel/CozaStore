@@ -1,8 +1,8 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using CozaStore.Models;
 
-namespace CozaStore.Models;
+namespace Cozastore.Models;
+
 [Table("Estoque")]
 public class Estoque
 {
@@ -29,14 +29,14 @@ public class Estoque
     public Cor Cor { get; set; }
 
     [Display(Name = "Preço de Venda")]
-    [Column(TypeName = "decimal(12,2)")]
+    [Column(TypeName = "decimal(12,2)")]  //999.999,99
     public decimal? Preco { get; set; }
 
     [Display(Name = "Preço com Desconto")]
-    [Column(TypeName = "decimal(2,2)")]
+    [Column(TypeName = "decimal(2,2)")]  //999.999,99
     public decimal? PrecoDesconto { get; set; }
 
     [Display(Name = "Qtde em Estoque")]
     [Required(ErrorMessage = "Por favor, informe a Qtde em Estoque")]
-    public int QtdeEstoque { get; set; } 
+    public int QtdeEstoque { get; set; }
 }

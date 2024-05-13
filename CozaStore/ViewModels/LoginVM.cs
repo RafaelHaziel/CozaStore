@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace CozaStore.ViewModels;
+namespace Cozastore.ViewModels;
 
 public class LoginVM
 {
@@ -15,6 +15,6 @@ public class LoginVM
 
     [Display(Name = "Manter Conectado?")]
     public bool Lembrar { get; set; } = false;
-
+    
     public string UrlRetorno { get; set; }
 }

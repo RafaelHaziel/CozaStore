@@ -1,8 +1,8 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using CozaStore.Models;
 
-namespace CozaStore.Models;
+namespace Cozastore.Models;
+
 [Table("ProdutoFoto")]
 public class ProdutoFoto
 {
@@ -16,10 +16,10 @@ public class ProdutoFoto
     [ForeignKey("ProdutoId")]
     public Produto Produto { get; set; }
 
-    [Required(ErrorMessage = "Por favor, faça upload da Foto")]
+    [Required(ErrorMessage = "Por favor, faça o upload da Foto")]
     [StringLength(300)]
     public string ArquivoFoto { get; set; }
-    
+
     [Display(Name = "Foto Destaque?")]
     public bool Destaque { get; set; }
 }

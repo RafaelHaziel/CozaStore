@@ -1,8 +1,8 @@
 using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
-using CozaStore.Models;
+using Cozastore.Models;
 
-namespace CozaStore.Controllers;
+namespace Cozastore.Controllers;
 
 public class HomeController : Controller
 {

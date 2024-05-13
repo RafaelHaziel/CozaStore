@@ -1,5 +1,6 @@
 using System.Net.Mail;
-using CozaStore.ViewModels;
+using System.Security.Claims;
+using Cozastore.ViewModels;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
@@ -42,28 +43,45 @@ public class AccountController : Controller
             if (IsValidEmail(userName))
             {
                 var user = await _userManager.FindByEmailAsync(userName);
-                if (user != null)
+                if(user != null)
                     userName = user.UserName;
+                
             }
+
             var result = await _signInManager.PasswordSignInAsync(
-            userName, login.Senha, login.Lembrar, lockoutOnFailure: true
+                userName, login.Senha, login.Lembrar, lockoutOnFailure: true
             );
 
-            if (result.Succeeded)
+            if(result.Succeeded)
             {
                 _logger.LogInformation($"Usuário {login.Email} acessou o sistema!");
                 return LocalRedirect(login.UrlRetorno);
             }
 
-            if (result.IsLockedOut)
+            if(result.IsLockedOut)
             {
                 _logger.LogWarning($"Usuário {login.Email} está bloqueado!");
                 ModelState.AddModelError(string.Empty, "Conta bloqueada! Aguarde alguns minutos para continuar!");
             }
-            ModelState.AddModelError(string.Empty, "Usuário e/ou Senha Inválidos!");
+
+            ModelState.AddModelError(string.Empty, "Usuário e/ou Senha Inválidos!!!");
         }
         return View(login);
     }
+
+    [HttpPost]
+    [ValidateAntiForgeryToken]
+    public async Task<IActionResult> Logout()
+    {
+        _logger.LogInformation($"Usuário {ClaimTypes.Email} saiu do sistema!");
+        await _signInManager.SignOutAsync();
+        return RedirectToAction("Index", "Home");
+    }
+
+    public IActionResult AccessDenied()
+    {
+        return View();
+    }   
 
     private static bool IsValidEmail(string email)
     {

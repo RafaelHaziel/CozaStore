@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using CozaStore.Models;
+using Cozastore.Models;
 
 namespace CozaStore.Data;
 
@@ -95,7 +95,7 @@ public class AppDbSeed
         builder.Entity<Categoria>().HasData(categorias);
         #endregion
 
-        #region Populate Tamanho
+               #region Populate Tamanho
         List<Tamanho> tamanhos = new() {
             new Tamanho() {
                 Id = 1,
@@ -350,8 +350,8 @@ public class AppDbSeed
         List<Usuario> usuarios = new(){
             new Usuario(){
                 UsuarioId = users[0].Id,
-                Nome = "Rafael Haziel e Tiago Fernandes",
-                DataNascimento = DateTime.Parse("01/01/2001"),
+                Nome = "Rafael Haziel",
+                DataNascimento = DateTime.Parse("01/01/2000"),
                 Foto = "/img/users/avatar.png"
             }
         };

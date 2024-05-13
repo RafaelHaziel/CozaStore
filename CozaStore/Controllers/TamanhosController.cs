@@ -5,10 +5,10 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using CozaStore.Data;
-using CozaStore.Models;
+using Cozastore.Data;
+using Cozastore.Models;
 
-namespace CozaStore.Controllers
+namespace Cozastore.Controllers
 {
     public class TamanhosController : Controller
     {

@@ -1,4 +1,4 @@
-@model CozaStore.Models.Categoria
+@model Cozastore.Models.Categoria
 @{
     ViewData["Title"] = "Categorias";
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
@@ -8,7 +8,7 @@
 <h4>Cadastro</h4>
 <hr />
 <div class="row">
-    <div class="col-md-4">
+    <div class="col-md-4 mb-3">
         <form asp-action="Create" method="POST" enctype="multipart/form-data">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group mb-3">
@@ -28,13 +28,13 @@
             </div>
             <div class="form-group mb-3">
                 <label asp-for="CategoriaPaiId" class="control-label"></label>
-                <select asp-for="CategoriaPaiId" class ="form-control" asp-items="ViewBag.CategoriaPaiId">
-                    <option value="">Nenhuma Categoria</option>    
+                <select asp-for="CategoriaPaiId" class ="form-select" asp-items="ViewBag.CategoriaPaiId">
+                    <option value="">Nenhuma Categoria</option>
                 </select>
             </div>
             <div class="form-group mb-3">
                 <label asp-for="Foto" class="control-label"></label>
-                <img id="Preview" class="img-fluid w-100"/>
+                <img id="Preview" class="img-fluid w-100" />
                 <input type="file" asp-for="Foto" class="form-control" accept=".jpg,.jpeg,.png,.gif,.jfif" />
             </div>
             <div class="form-group mb-3">
@@ -45,15 +45,15 @@
 </div>
 
 <div>
-    <a asp-action="Index">Voltar a listagem</a>
+    <a asp-action="Index">Voltar</a>
 </div>
 
 @section Scripts {
     <script>
-        window.addEventListener("load", function(){
-            document.querySelector("input[type='file']").addEventListener('change', function (){
+        window.addEventListener("load", function() {
+            document.querySelector("input[tyé='file']").addEventListener('change', function () {
                 if (this.files && this.files[0]) {
-                    var img = document.getElementById('Preview');
+                    var img = document.getElementById('preview');
                     img.src = URL.createObjectURL(this.files[0]);
                 }
             })

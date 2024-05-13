@@ -1,19 +1,19 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
-namespace CozaStore.Models;
+namespace Cozastore.Models;
+
 [Table("Usuario")]
 public class Usuario
 {
     [Key]
     public string UsuarioId { get; set; }
     [ForeignKey("UsuarioId")]
-    public IdentityUser UsuarioConta { get; set; }
+    public IdentityUser ContaUsuario { get; set; }
 
-    [Required(ErrorMessage = "Por favor, informe o Nome")]
-    [StringLength(60, ErrorMessage = "O nome deve possuir no máximo 60 caracteres")]
+    [Required(ErrorMessage = "Favor, informe o Nome.")]
+    [StringLength(60, ErrorMessage = "O Nome deve possuir no máximo 60 caracteres.")]
     public string Nome { get; set; }
 
     [DataType(DataType.Date)]

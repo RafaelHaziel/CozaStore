@@ -1,10 +1,10 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using CozaStore.Data;
-using CozaStore.Models;
+using Cozastore.Data;
+using Cozastore.Models;
 
-namespace CozaStore.Controllers;
+namespace Cozastore.Controllers;
 
 public class CategoriasController : Controller
 {
@@ -101,53 +101,37 @@ public class CategoriasController : Controller
     // To protect from overposting attacks, enable the specific properties you want to bind to.
     // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
     [HttpPost]
-[ValidateAntiForgeryToken]
-public async Task<IActionResult> Edit(int id, [Bind("Id,Nome,Foto,Filtrar,Banner,CategoriaPaiId")] Categoria categoria, IFormFile NovaFoto)
-{
-    if (id != categoria.Id)
+    [ValidateAntiForgeryToken]
+    public async Task<IActionResult> Edit(int id, [Bind("Id,Nome,Foto,Filtrar,Banner,CategoriaPaiId")] Categoria categoria)
     {
-        return NotFound();
-    }
-
-    if (ModelState.IsValid)
-    {
-        try
+        if (id != categoria.Id)
         {
-            _context.Update(categoria);
-            await _context.SaveChangesAsync();
+            return NotFound();
+        }
 
-            if (NovaFoto != null)
+        if (ModelState.IsValid)
+        {
+            try
             {
-                string fileName = categoria.Id + Path.GetExtension(NovaFoto.FileName);
-                string upload = Path.Combine(_host.WebRootPath, "img\\categorias");
-                string newFile = Path.Combine(upload, fileName);
-
-                using (var stream = new FileStream(newFile, FileMode.Create))
-                {
-                    await NovaFoto.CopyToAsync(stream);
-                }
-
-                categoria.NovaFoto = "\\img\\categorias\\" + fileName;
+                _context.Update(categoria);
                 await _context.SaveChangesAsync();
             }
-        }
-        catch (DbUpdateConcurrencyException)
-        {
-            if (!CategoriaExists(categoria.Id))
+            catch (DbUpdateConcurrencyException)
             {
-                return NotFound();
+                if (!CategoriaExists(categoria.Id))
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    throw;
+                }
             }
-            else
-            {
-                throw;
-            }
+            return RedirectToAction(nameof(Index));
         }
-        return RedirectToAction(nameof(Index));
+        ViewData["CategoriaPaiId"] = new SelectList(_context.Categorias, "Id", "Nome", categoria.CategoriaPaiId);
+        return View(categoria);
     }
-    
-    ViewData["CategoriaPaiId"] = new SelectList(_context.Categorias, "Id", "Nome", categoria.CategoriaPaiId);
-    return View(categoria);
-}
 
     // GET: Categorias/Delete/5
     public async Task<IActionResult> Delete(int? id)

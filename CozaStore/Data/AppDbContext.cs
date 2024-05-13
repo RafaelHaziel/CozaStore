@@ -1,9 +1,9 @@
-using CozaStore.Models;
+using Cozastore.Models;
 using CozaStore.Data;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
-namespace CozaStore.Data;
+namespace Cozastore.Data;
 
 public class AppDbContext : IdentityDbContext
 {
@@ -24,7 +24,7 @@ public class AppDbContext : IdentityDbContext
         base.OnModelCreating(builder);
         AppDbSeed seed = new(builder);
 
-        #region  Relacionamento Muitos para Muitos - Estoque
+        #region Relacionamento Muitos para Muitos - Estoque
         builder.Entity<Estoque>()
             .HasOne(e => e.Produto)
             .WithMany(p => p.Estoque)
@@ -34,7 +34,7 @@ public class AppDbContext : IdentityDbContext
             .HasOne(e => e.Cor)
             .WithMany(c => c.Estoque)
             .HasForeignKey(e => e.CorId);
-
+        
         builder.Entity<Estoque>()
             .HasOne(e => e.Tamanho)
             .WithMany(t => t.Estoque)

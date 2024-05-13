@@ -1,4 +1,4 @@
-namespace CozaStore.Models;
+namespace Cozastore.Models;
 
 public class ErrorViewModel
 {

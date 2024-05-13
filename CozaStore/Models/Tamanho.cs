@@ -1,7 +1,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace CozaStore.Models;
+namespace Cozastore.Models;
 
 [Table("Tamanho")]
 public class Tamanho
@@ -10,13 +10,13 @@ public class Tamanho
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
     public int Id { get; set; }
 
-    [Required(ErrorMessage = "Por favor, informe a Sigla")]
-    [StringLength(5, ErrorMessage = "A Sigla deve possuir no máximo 5 caracteres")]
+    [Required(ErrorMessage = "Favor, informe a Sigla.")]
+    [StringLength(5, ErrorMessage = "A Sigla deve possuir no máximo 5 caracteres.")]
     public string Sigla { get; set; }
 
-    [Required(ErrorMessage = "Por favor, informe o Nome")]
-    [StringLength(30, ErrorMessage = "O nome deve possuir no máximo 30 caracteres")]
+    [Required(ErrorMessage = "Favor, informe o nome.")]
+    [StringLength(30, ErrorMessage = "O nome deve possuir no máximo 30 caracteres.")]
     public string Nome { get; set; }
 
-    public ICollection<Estoque> Estoque { get; set; }
+    public ICollection<Estoque> Estoque { get; set; } 
 }
