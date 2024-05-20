@@ -81,7 +81,7 @@ public class AccountController : Controller
     public IActionResult AccessDenied()
     {
         return View();
-    }   
+    }
 
     private static bool IsValidEmail(string email)
     {

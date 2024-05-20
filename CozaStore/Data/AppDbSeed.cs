@@ -338,6 +338,24 @@ public class AppDbSeed
                 NormalizedUserName = "ADMIN",
                 LockoutEnabled = false,
                 EmailConfirmed = true,
+            },
+            new IdentityUser(){
+                Id = Guid.NewGuid().ToString(),
+                Email = "funcionario@cozastore.com",
+                NormalizedEmail = "FUNCIONARIO@COZASTORE.COM",
+                UserName = "Funcionario",
+                NormalizedUserName = "FUNCIONARIO",
+                LockoutEnabled = true,
+                EmailConfirmed = true,
+            },
+            new IdentityUser(){
+                Id = Guid.NewGuid().ToString(),
+                Email = "cliente@gmail.com",
+                NormalizedEmail = "CLIENTE@GMAIL.COM",
+                UserName = "Cliente",
+                NormalizedUserName = "CLIENTE",
+                LockoutEnabled = true,
+                EmailConfirmed = true,
             }
         };
         foreach (var user in users)
@@ -350,9 +368,21 @@ public class AppDbSeed
         List<Usuario> usuarios = new(){
             new Usuario(){
                 UsuarioId = users[0].Id,
-                Nome = "Rafael Haziel",
+                Nome = "Rafael Haziel e Tiago Fernandes",
                 DataNascimento = DateTime.Parse("01/01/2000"),
-                Foto = "/img/users/avatar.png"
+                Foto = "/img/usuarios/avatar.png"
+            },
+            new Usuario(){
+                UsuarioId = users[1].Id,
+                Nome = "Fulaninho Trabalhador",
+                DataNascimento = DateTime.Parse("01/01/2000"),
+                Foto = "/img/usuarios/1.png"
+            },
+            new Usuario(){
+                UsuarioId = users[2].Id,
+                Nome = "Rafael Haziel e Tiago Fernandes",
+                DataNascimento = DateTime.Parse("01/01/2000"),
+                Foto = "/img/usuarios/2.png"
             }
         };
         builder.Entity<Usuario>().HasData(usuarios);
@@ -371,6 +401,18 @@ public class AppDbSeed
             },
             new IdentityUserRole<string>() {
                 UserId = users[0].Id,
+                RoleId = roles[2].Id
+            },
+            new IdentityUserRole<string>() {
+                UserId = users[1].Id,
+                RoleId = roles[1].Id
+            },
+            new IdentityUserRole<string>() {
+                UserId = users[1].Id,
+                RoleId = roles[2].Id
+            },
+            new IdentityUserRole<string>() {
+                UserId = users[2].Id,
                 RoleId = roles[2].Id
             }
         };

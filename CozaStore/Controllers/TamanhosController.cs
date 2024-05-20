@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using Cozastore.Data;
 using Cozastore.Models;
 
+[Authorize(Roles = "Administrador, Funcionário")]
 namespace Cozastore.Controllers
 {
     public class TamanhosController : Controller
